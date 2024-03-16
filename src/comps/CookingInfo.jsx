@@ -4,10 +4,10 @@ export default function CookingInfo() {
       <div className='mb-8'>
         <h3 className='py-2 mb-4 rounded-lg bg-gray-200 text-center text-xl font-semibold'>Want to cook: 01</h3>
 
-        <table className="table-auto border-y text-sm text-gray-600">
+        <table className="table-auto border-b text-sm text-gray-600">
           <thead>
             <tr className="text-black">
-              <th></th>
+              <th className="text-center">#</th>
               <th className="px-2 pb-2 text-center">Name</th>
               <th className="px-2 pb-2 text-center">Time</th>
               <th className="px-2 pb-2 text-center">Calories</th>

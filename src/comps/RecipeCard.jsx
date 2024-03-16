@@ -1,21 +1,23 @@
 import { Clock, Fire } from 'react-bootstrap-icons'
-import Spaghetti from '../assets/spaghetti.png'
-export default function RecipeCard() {
+export default function RecipeCard({recipe}) {
+  const {recipe_id, recipe_image, recipe_name, description, ingredients, preparing_time, calories} = recipe
+
   return (
     <div className='max-w-sm border p-4 space-y-3 rounded-2xl'>
-      <img src={Spaghetti} alt="" className='w-full' />
-      <h3 className='text-xl font-semibold'>Spaghetti Bolognese</h3>
-      <p className='text-gray-500'>Classic Italian pasta dish with savory meat sauce.</p>
+      <img src={recipe_image} alt="" className='w-full h-48 object-cover rounded-lg' />
+      <h3 className='text-xl font-semibold'>{recipe_name}</h3>
+      <p className='text-gray-500'>{description}</p>
       <div className='border-y py-3'>
-        <h3 className='mb-1'>Ingredients: 6</h3>
+        <h3 className='mb-1'>Ingredients: {ingredients.length}</h3>
         <ul className='list-disc pl-8'>
-          <li className='text-gray-500 text-sm'>500g ground beef</li>
-          <li className='text-gray-500 text-sm'>500g ground beef</li>
+          {ingredients.map(ing => 
+            <li className='text-gray-500 text-sm' key={ing}>{ing}</li>
+          )}
         </ul>
       </div>
       <div className='flex gap-6 justify-between.'>
-        <p className='flex gap-1 items-center'><Clock /> 30 minutes</p>
-        <p className='flex gap-1 items-center'><Fire /> 600 calories </p>
+        <p className='flex gap-1 items-center'><Clock /> {preparing_time}</p>
+        <p className='flex gap-1 items-center'><Fire /> {calories} </p>
       </div>
       <button className='px-4 py-2 rounded-3xl text-black bg-green-400 hover:opacity-85'>Want to cook</button>
     </div>
