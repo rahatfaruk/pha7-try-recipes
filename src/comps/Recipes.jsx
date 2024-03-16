@@ -1,10 +1,25 @@
 import { useEffect, useState } from "react";
-import CookingInfo from "./CookingInfo";
+// toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+// comps
+import WantToCook from "./WantToCook";
 import RecipeCard from "./RecipeCard";
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([])
+  const [wantToCook, setWantToCook] = useState([])
 
+  // add recipe into want-to-cook list
+  const handleAddWantToCook = recipe => {
+    if (wantToCook.find(rcp => rcp.recipe_id === recipe.recipe_id)) {
+      toast.warning("Already in cook list!!")
+      return
+    }
+    setWantToCook([...wantToCook, recipe])
+  }
+
+  // fetch all recipes
   useEffect(() => {
     const fetchRecipes = async () => {
       const res = await fetch('/recipes.json') 
@@ -12,7 +27,8 @@ export default function Recipes() {
       setRecipes(data);
     }
     fetchRecipes()
-  })
+  }, [])
+
   return (
     <section className="px-4 py-8">
       <div className="max-w-screen-lg mx-auto">
@@ -22,17 +38,18 @@ export default function Recipes() {
         </div>
 
         <div className="flex flex-col md:flex-row gap-4 items-center md:items-start">
-          <div className=" grid lg:grid-cols-2 gap-4">
+          <div className="flex-[2] grid lg:grid-cols-2 gap-4">
             {recipes.map(recipe => 
-              <RecipeCard key={recipe.recipe_id} recipe={recipe} />
+              <RecipeCard key={recipe.recipe_id} recipe={recipe} onAddWantToCook={handleAddWantToCook} />
             )}
           </div>
-          <div className="max-w-lg border p-4 rounded-2xl">
-            <CookingInfo />
-            <CookingInfo />
+          <div className="flex-1 max-w-lg border p-4 rounded-2xl">
+            <WantToCook wantToCook={wantToCook} />
+            {/* <CookingInfo /> */}
           </div>
         </div>
       </div>
+      <ToastContainer position="top-center" />
     </section>
   )
 }

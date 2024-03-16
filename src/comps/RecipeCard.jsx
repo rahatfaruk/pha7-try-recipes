@@ -1,5 +1,6 @@
 import { Clock, Fire } from 'react-bootstrap-icons'
-export default function RecipeCard({recipe}) {
+
+export default function RecipeCard({recipe, onAddWantToCook}) {
   const {recipe_id, recipe_image, recipe_name, description, ingredients, preparing_time, calories} = recipe
 
   return (
@@ -19,7 +20,7 @@ export default function RecipeCard({recipe}) {
         <p className='flex gap-1 items-center'><Clock /> {preparing_time}</p>
         <p className='flex gap-1 items-center'><Fire /> {calories} </p>
       </div>
-      <button className='px-4 py-2 rounded-3xl text-black bg-green-400 hover:opacity-85'>Want to cook</button>
+      <button className='px-4 py-2 rounded-3xl text-black bg-green-400 hover:opacity-85' onClick={() => onAddWantToCook(recipe)}>Want to cook</button>
     </div>
   )
 }
