@@ -1,5 +1,6 @@
 import Navbar from "./comps/Navbar"
 import Hero from "./comps/Hero"
+import Recipes from "./comps/Recipes"
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div>
       <Navbar />
       <Hero />
+      <Recipes />
     </div>
   )
 }
