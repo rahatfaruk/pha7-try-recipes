@@ -30,9 +30,14 @@ export default function Recipes() {
   // fetch all recipes
   useEffect(() => {
     const fetchRecipes = async () => {
-      const res = await fetch('/recipes.json') 
-      const data = await res.json()
-      setRecipes(data);
+      try {
+        const res = await fetch('/recipes.json') 
+        const data = await res.json()
+        setRecipes(data);
+      } catch(err) {
+        alert(err.message)
+        console.log(err.message);
+      }
     }
     fetchRecipes()
   }, [])

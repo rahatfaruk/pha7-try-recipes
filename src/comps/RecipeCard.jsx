@@ -1,7 +1,7 @@
 import { Clock, Fire } from 'react-bootstrap-icons'
 
 export default function RecipeCard({recipe, onAddWantToCook}) {
-  const {recipe_id, recipe_image, recipe_name, description, ingredients, preparing_time, calories} = recipe
+  const {recipe_image, recipe_name, description, ingredients, preparing_time, calories} = recipe
 
   return (
     <div className='max-w-sm border p-4 space-y-3 rounded-2xl'>

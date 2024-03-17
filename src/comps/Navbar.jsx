@@ -18,10 +18,10 @@ export default function Navbar() {
         {/* nav-links-container */}
         <div className={`${showLinks ? 'block' : 'hidden'} md:block mb-4 md:mb-0`}>
           <ul className="flex flex-col md:flex-row gap-2 md:gap-4  pt-4 md:pt-0">
-            <li><a href="#" className="block px-4 py-2 bg-gray-200 hover:bg-gray-300">Home</a></li>
-            <li><a href="#" className="block px-4 py-2 bg-gray-200 hover:bg-gray-300">About</a></li>
-            <li><a href="#" className="block px-4 py-2 bg-gray-200 hover:bg-gray-300">Join</a></li>
-            <li><a href="#" className="block px-4 py-2 bg-gray-200 hover:bg-gray-300">Contact</a></li>
+            <li><a href="#" className="block px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300">Home</a></li>
+            <li><a href="#" className="block px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300">Recipes</a></li>
+            <li><a href="#" className="block px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300">About</a></li>
+            <li><a href="#" className="block px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300">Search</a></li>
           </ul>
         </div>
 
