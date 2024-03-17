@@ -1,8 +1,11 @@
-export default function WantToCook({wantToCook, addToCookingList}) {
+export default function CurrentlyCooking({cookingList}) {
+  const totalTime = cookingList.reduce((total, recipe) => total + (+recipe.preparing_time.slice(0,2)), 0)
+  const totalCalory = cookingList.reduce((total, recipe) => total + (+recipe.calories.slice(0,3)), 0)
+
   return (
     <div>
       <div className='mb-8'>
-        <h3 className='py-2 mb-4 rounded-lg bg-gray-200 text-center text-xl font-semibold'>Want to cook: {wantToCook.length}</h3>
+        <h3 className='py-2 mb-4 rounded-lg bg-gray-200 text-center text-xl font-semibold'>Currently Cooking: {cookingList.length}</h3>
 
         <table className="w-full border-b text-sm text-gray-600">
           <thead>
@@ -11,22 +14,26 @@ export default function WantToCook({wantToCook, addToCookingList}) {
               <th className="px-2 pb-2 text-center">Name</th>
               <th className="px-2 pb-2 text-center">Time</th>
               <th className="px-2 pb-2 text-center">Calories</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
-            {wantToCook.map((recipe, index) => (
+            {cookingList.map((recipe, index) => (
               <tr key={recipe.recipe_id}>
                 <td className="px-2 py-2">{index+1}</td>
                 <td className="px-2 py-2 text-center">{recipe.recipe_name}</td>
                 <td className="px-2 py-2 text-center">{recipe.preparing_time}</td>
                 <td className="px-2 py-2 text-center">{recipe.calories}</td>
-                <td>
-                  <button className="px-2 py-1 rounded-3xl text-sm text-black bg-green-400 hover:opacity-85" onClick={() => addToCookingList(recipe)}>Preparing</button>
-                </td>
               </tr>
             ))}
           </tbody>
+          <tfoot>
+            <tr className="bg-green-100 text-black">
+              <td></td>
+              <td></td>
+              <td className="px-2 py-2 text-center">Total time: {totalTime}min</td>
+              <td className="px-2 py-2 text-center">Total calory: {totalCalory}</td>
+            </tr>
+          </tfoot>
         </table>
 
       </div>

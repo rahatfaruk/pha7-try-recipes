@@ -5,10 +5,12 @@ import 'react-toastify/dist/ReactToastify.css';
 // comps
 import WantToCook from "./WantToCook";
 import RecipeCard from "./RecipeCard";
+import CurrentlyCooking from "./CurrentlyCooking";
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([])
   const [wantToCook, setWantToCook] = useState([])
+  const [cookingList, setCookingList] = useState([])
 
   // add recipe into want-to-cook list
   const handleAddWantToCook = recipe => {
@@ -17,6 +19,12 @@ export default function Recipes() {
       return
     }
     setWantToCook([...wantToCook, recipe])
+  }
+
+  // onClick preparing-btn, remove item from wantToCook & add it inside cookingList 
+  const addToCookingList = recipe => {
+    setWantToCook(wantToCook.filter(item => item.recipe_id !== recipe.recipe_id))
+    setCookingList([...cookingList, recipe])
   }
 
   // fetch all recipes
@@ -44,8 +52,8 @@ export default function Recipes() {
             )}
           </div>
           <div className="flex-1 max-w-lg border p-4 rounded-2xl">
-            <WantToCook wantToCook={wantToCook} />
-            {/* <CookingInfo /> */}
+            <WantToCook wantToCook={wantToCook} addToCookingList={addToCookingList} />
+            <CurrentlyCooking cookingList={cookingList} />
           </div>
         </div>
       </div>
