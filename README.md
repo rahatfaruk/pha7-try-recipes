@@ -6,5 +6,5 @@ Mainly "Our Recipes" section is functional. We load some recipes from local data
   - Tech: React 18, tailwind v3; extra package: react-bootstrap-icons, toastify
   - source repo: [B9A7-CHEFS-TABLE](https://github.com/ProgrammingHero1/B9A7-CHEFS-TABLE) 
   - My private repo (hosted on phero): https://github.com/programming-hero-web-course1/b9a7-chefs-table-rahatfaruk 
-  - Live site: 
+  - Live site (surge): https://pha7-tryrecipes-rf.surge.sh/ 
   - Developed by Rahat Faruk (me)
